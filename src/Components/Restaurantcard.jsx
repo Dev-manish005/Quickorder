@@ -1,15 +1,16 @@
  import { Imgurl } from "./constants"
  
- const RestaurantCard =() =>{
+ const RestaurantCard =({title,Rating,Deliverytime,cusines,location}) =>{
    
-    const details={
-        title:"Mcdonald's",
-        Rating:4.5,
-        Deliverytime:"25-30 min",
-        cusines:"Burger, Beverages, Fast Food,...",
-        location:"Chhindwara City"
-    }
-   
+    // const props={
+        // title:"Mcdonald's",
+        // Rating:4.5,
+        // Deliverytime:"25-30 min",
+        // cusines:"Burger, Beverages, Fast Food,...",
+        // location:"Chhindwara City"
+    // }
+//    console.log("props",props);
+//    const {title,Rating,Deliverytime,cusines,location}=props;
     return(
         <>
             <div className="w-full max-w-[] drop-shadow-2xl">
@@ -17,13 +18,13 @@
                     <img className="w-full h-50 object-cover  " src={Imgurl} alt="Burger" />
                 </div>
                 <div>
-                    <h3 className="font-bold text-xl text-[18px]">{details?.title}</h3>
+                    <h3 className="font-bold text-xl text-[18px]">{title}</h3>
                     <div className="flex gap-3">
-                        <p className="font-semibold text-[16px]">⭐{details?.Rating}</p>
-                        <p className="font-semibold text-[16px]">{details?.Deliverytime}</p>
+                        <p className="font-semibold text-[16px]">⭐{Rating}</p>
+                        <p className="font-semibold text-[16px]">{Deliverytime}</p>
                     </div>
-                    <p className="text-gray-500 text-[16px]">{details?.cusines}</p>
-                    <p className="text-gray-500 text-[16px]">{details?.location}</p>
+                    <p className="text-gray-500 text-[16px]">{cusines}</p>
+                    <p className="text-gray-500 text-[16px]">{location}</p>
                 </div>
                 
             </div>
