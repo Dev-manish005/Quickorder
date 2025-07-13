@@ -1,6 +1,6 @@
  import { Imgurl } from "./constants"
  
- const RestaurantCard =({title,Rating,Deliverytime,cusines,location}) =>{
+ const RestaurantCard =({title,Rating,Deliverytime,cusines,location,Imgid}) =>{
    
     // const props={
         // title:"Mcdonald's",
@@ -14,8 +14,9 @@
     return(
         <>
             <div className="w-full max-w-[] drop-shadow-2xl">
+                
                 <div className="w-full rounded-2xl overflow-hidden">
-                    <img className="w-full h-50 object-cover  " src={Imgurl} alt="Burger" />
+                    <img className="w-full h-50 object-cover  " src={`${Imgurl+Imgid}`} alt="Burger" />
                 </div>
                 <div>
                     <h3 className="font-bold text-xl text-[18px]">{title}</h3>
