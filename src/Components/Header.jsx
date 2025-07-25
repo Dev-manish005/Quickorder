@@ -1,5 +1,6 @@
 
 import logo from "../assets/logo.png";
+import Searchbar from "./Searchbar";
 
 const Header = () => {
   return (
@@ -15,14 +16,8 @@ const Header = () => {
           </div>
 
           {/* Search bar */}
-          <div className="w-full sm:w-1/2">
-            <input
-              type="text"
-              placeholder="Search"
-              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400"
-            />
-            
-          </div>
+          <Searchbar/>
+          
 
           {/* Navigation links */}
           <nav className="flex space-x-4 text-orange-500 text-sm sm:text-base font-semibold">

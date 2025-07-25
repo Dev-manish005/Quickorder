@@ -7,7 +7,7 @@ import Searchbar from "./Searchbar"
         <>
             <div className=" p-7">
                <div className="flex justify-between">
-                 <Searchbar/>
+                 
                  <Filters/>
                </div>
                 <Cardcontainer/>

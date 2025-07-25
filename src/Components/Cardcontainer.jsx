@@ -4,39 +4,39 @@ import { API_URL } from "./constants";
 
  const Cardcontainer =() =>{
 
-    const[count,setcount] = useState(1);
+    
     const [restaurantData,setrestaurantData]=useState([]);
 
-    const resData =[
-        {
-            title:"Mcdonald's",
-            Rating:4.5,
-            Deliverytime:"25-30 min",
-            cusines:"Burger, Beverages, Fast Food,...",
-            location:"Chhindwara City"
-        },
-        {
-            title:"cdd",
-            Rating:4.5,
-            Deliverytime:"25-30 min",
-            cusines:"Burger, Beverages, Fast Food,...",
-            location:"Chhindwara City"
-        },
-        {
-            title:"pizza",
-            Rating:4.5,
-            Deliverytime:"25-45 min",
-            cusines:"Burger, Beverages, Fast Food,...",
-            location:"Chhindwara City"
-        },
-        {
-            title:"star bucks",
-            Rating:4.5,
-            Deliverytime:"25-45 min",
-            cusines:"Burger, Beverages, Fast Food,...",
-            location:"Chhindwara City"
-        },
-    ]
+    // const resData =[
+    //     {
+    //         title:"Mcdonald's",
+    //         Rating:4.5,
+    //         Deliverytime:"25-30 min",
+    //         cusines:"Burger, Beverages, Fast Food,...",
+    //         location:"Chhindwara City"
+    //     },
+    //     {
+    //         title:"cdd",
+    //         Rating:4.5,
+    //         Deliverytime:"25-30 min",
+    //         cusines:"Burger, Beverages, Fast Food,...",
+    //         location:"Chhindwara City"
+    //     },
+    //     {
+    //         title:"pizza",
+    //         Rating:4.5,
+    //         Deliverytime:"25-45 min",
+    //         cusines:"Burger, Beverages, Fast Food,...",
+    //         location:"Chhindwara City"
+    //     },
+    //     {
+    //         title:"star bucks",
+    //         Rating:4.5,
+    //         Deliverytime:"25-45 min",
+    //         cusines:"Burger, Beverages, Fast Food,...",
+    //         location:"Chhindwara City"
+    //     },
+    // ]
 
     const getData= async()=>{
         try{
@@ -54,14 +54,10 @@ import { API_URL } from "./constants";
         getData();
     },[])
     
-    const increasecount=()=>{
-        console.log(count);
-        setcount(count+1);
-    }
+   
     return(
         <>
-             <h1>increase {count} </h1>
-            <button onClick={increasecount} className="in-hover:cursor-pointer hover:bg-green-300 bg-red-300 p-3 rounded-md">increase +1</button>
+             
             <div>Cardcontainer</div>
             <div className="grid grid-cols-4 gap-5">
            
