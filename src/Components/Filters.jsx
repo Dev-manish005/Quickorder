@@ -1,7 +1,7 @@
 const Filters =() =>{
 return(
         <>
-            <div>Filters</div>
+            {/* <div>Filters</div> */}
         </>
     )
 }

@@ -13,7 +13,8 @@
 //    const {title,Rating,Deliverytime,cusines,location}=props;
     return(
         <>
-            <div className="w-full max-w-[] drop-shadow-2xl">
+        <div>
+             <div className="w-full max-w-[] drop-shadow-2xl">
                 
                 <div className="w-full rounded-2xl overflow-hidden">
                     <img className="w-full h-50 object-cover  " src={`${Imgurl+Imgid}`} alt="Burger" />
@@ -29,6 +30,8 @@
                 </div>
                 
             </div>
+        </div>
+           
         </>
     )
 }

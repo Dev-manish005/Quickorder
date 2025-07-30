@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 import RestaurantCard from "./Restaurantcard"
 import { API_URL } from "./constants";
 
- const Cardcontainer =() =>{
+const Cardcontainer = () => {
 
-    
-    const [restaurantData,setrestaurantData]=useState([]);
 
+    const [restaurantData, setrestaurantData] = useState([]);
+    const [filteredData,setfilteredData]=useState([]);
+    const [searchText, setsearchText] = useState("");
     // const resData =[
     //     {
     //         title:"Mcdonald's",
@@ -38,46 +39,68 @@ import { API_URL } from "./constants";
     //     },
     // ]
 
-    const getData= async()=>{
-        try{
+    const getData = async () => {
+        try {
             const data = await fetch(API_URL);
             const json = await data.json();
-            console.log("json",json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            console.log("json", json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            setfilteredData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
             setrestaurantData(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         }
-        catch(err){
-            console.log("error is...",err);
+        catch (err) {
+            console.log("error is...", err);
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getData();
-    },[])
-    
-   
-    return(
-        <>
-             
-            <div>Cardcontainer</div>
-            <div className="grid grid-cols-4 gap-5">
-           
-            {restaurantData.map((restaurant)=>{
-                return(
-                    <RestaurantCard
-                        title={restaurant?.info?.name}
-                        Rating={restaurant?.info?.avgRating}
-                        Deliverytime={restaurant?.info?.sla?.slaString}
-                        cusines={restaurant?.info?.cuisines}
-                        location={restaurant?.info?.locality}  
-                        Imgid={restaurant?.info?.cloudinaryImageId}
-                        // {...restaurant} //only can be used if the keys of obj are same. 
-                        key={restaurant?.info?.id}              
-                        />
-                )
+    }, [])
 
-            })}
-                 
+    
+    const handleSearch = () => {
+       
+        const newArray=restaurantData?.filter(restaurant=>restaurant?.info?.name.toLowerCase().includes(searchText));
+        console.log("newArray:|",newArray);
+        setfilteredData(newArray);
+    }
+
+
+    return (
+        <>
+
+            <div className="w-full flex items-center justify-center gap-2 sm:w-1/2 mx-auto p-2 sticky">
+                <input
+                    type="text"
+                    
+                    onChange={(e) => setsearchText(e.target.value.toLowerCase().trim())}
+                    placeholder="Search"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400"
+                />
+                <button onClick={handleSearch} className="px-4 py-2 bg-orange-400 text-white rounded-xl hover:bg-orange-500 transition">
+                    🔍
+                </button>
             </div>
+
+
+            {filteredData && <div className="grid grid-cols-4 gap-5">
+
+                {filteredData.map((restaurant) => {
+                    return (
+                        <RestaurantCard
+                            title={restaurant?.info?.name}
+                            Rating={restaurant?.info?.avgRating}
+                            Deliverytime={restaurant?.info?.sla?.slaString}
+                            cusines={restaurant?.info?.cuisines}
+                            location={restaurant?.info?.locality}
+                            Imgid={restaurant?.info?.cloudinaryImageId}
+                            // {...restaurant} //only can be used if the keys of obj are same. 
+                            key={restaurant?.info?.id}
+                        />
+                    )
+
+                })}
+
+            </div>}
         </>
     )
 }

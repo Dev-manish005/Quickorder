@@ -16,7 +16,7 @@ const Header = () => {
           </div>
 
           {/* Search bar */}
-          <Searchbar/>
+          
           
 
           {/* Navigation links */}
