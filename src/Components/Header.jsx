@@ -5,7 +5,7 @@ import Searchbar from "./Searchbar";
 const Header = () => {
   return (
     <>
-    <header className="bg-white shadow-md">
+    <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between py-4 space-y-4 sm:space-y-0">
           
