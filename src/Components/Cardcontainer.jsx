@@ -10,7 +10,7 @@ const Cardcontainer = () => {
     const [searchText, setsearchText] = useState("");
     const [headerTitle, setheaderTitle] = useState("");
     const [isloading, setisloading] = useState(true);
-    const [errormessage,seterrormessage]=useState("");
+    const [errormessage, seterrormessage] = useState("");
     // const resData =[
     //     {
     //         title:"Mcdonald's",
@@ -45,9 +45,9 @@ const Cardcontainer = () => {
     const getData = async () => {
         try {
             const data = await fetch(API_URL);
-            console.log("data",data);
-            if(!data.ok){
-                switch(data.status){
+            console.log("data", data);
+            if (!data.ok) {
+                switch (data.status) {
                     case 401:
                         throw new Error(`${data.status} Unauthorized request`);
                     case 402:
@@ -72,18 +72,12 @@ const Cardcontainer = () => {
             seterrormessage(err.message);
             console.log("error:", err.message);
         }
-        finally{
+        finally {
             setisloading(false);
         }
     }
 
-    if (isloading) {
-        return <h1>Getting the Best Restaurants nearby...</h1>
-    }
-    
-    if(errormessage){
-        return    <h1>{errormessage}</h1>
-    } 
+
 
     useEffect(() => {
         getData();
@@ -95,6 +89,20 @@ const Cardcontainer = () => {
         const newArray = restaurantData?.filter(restaurant => restaurant?.info?.name.toLowerCase().includes(searchText));
         console.log("newArray:|", newArray);
         setfilteredData(newArray);
+    }
+
+    if (isloading) {
+        return (<div class="flex items-center justify-center h-screen flex-col">
+            <div class="w-8 h-8 border-4 border-gray-500 border-t-transparent rounded-full animate-spin"></div>
+            <h1 className="font-bold text-3xl text-gray-400">Getting the Best Restaurants nearby...</h1>
+        </div>)
+    }
+
+    if (errormessage) {
+        return (<div className="container border-2 border-gray-500 rounded-4xl w-full mx-w-[250px] h-60 flex justify-center items-center">
+            <h1 className="font-bold text-6xl text-gray-400 ">{errormessage}</h1>
+        </div>)
+
     }
 
 
@@ -120,7 +128,7 @@ const Cardcontainer = () => {
                 </h2>
             )}
 
-            {filteredData.length === 0 ?(<h1>NO! Restaurants Matched Your Search... </h1>):(<div className="grid grid-cols-4 gap-5">
+            {filteredData.length === 0 ? (<h1>NO! Restaurants Matched Your Search... </h1>) : (<div className="grid grid-cols-4 gap-5">
 
                 {filteredData.map((restaurant) => {
                     return (
