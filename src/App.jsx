@@ -5,13 +5,14 @@ import Cardcontainer from './Components/Cardcontainer'
 import RestaurantCard from './Components/Restaurantcard'
 import Footer from './Components/Footer'
 import Header from './Components/Header'
+import { Outlet } from 'react-router'
 
 function App() {
   
   return (
     <>
       <Header/>
-      <Body/>
+      <Outlet/>
       <Footer/>
       
     </>

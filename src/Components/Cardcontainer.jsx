@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import RestaurantCard from "./Restaurantcard"
 import { API_URL } from "./constants";
 
+
 const Cardcontainer = () => {
 
 
@@ -86,14 +87,14 @@ const Cardcontainer = () => {
 
     const handleSearch = () => {
 
-        const newArray = restaurantData?.filter(restaurant => restaurant?.info?.name.toLowerCase().includes(searchText));
+        const newArray =restaurantData?.filter(restaurant => restaurant?.info?.name.toLowerCase().includes(searchText));
         console.log("newArray:|", newArray);
         setfilteredData(newArray);
     }
 
     if (isloading) {
-        return (<div class="flex items-center justify-center h-screen flex-col">
-            <div class="w-8 h-8 border-4 border-gray-500 border-t-transparent rounded-full animate-spin"></div>
+        return (<div className="flex items-center justify-center h-screen flex-col">
+            <div className="w-8 h-8 border-4 border-gray-500 border-t-transparent rounded-full animate-spin"></div>
             <h1 className="font-bold text-3xl text-gray-400">Getting the Best Restaurants nearby...</h1>
         </div>)
     }
@@ -128,7 +129,9 @@ const Cardcontainer = () => {
                 </h2>
             )}
 
-            {filteredData.length === 0 ? (<h1>NO! Restaurants Matched Your Search... </h1>) : (<div className="grid grid-cols-4 gap-5">
+            {filteredData.length === 0 ? (<div className="flex items-center justify-center h-screen flex-col">
+                <h1 className="font-bold text-3xl text-gray-400">NO! Restaurants Matched Your Search... </h1>
+                </div>) : (<div className="grid grid-cols-4 gap-5">
 
                 {filteredData.map((restaurant) => {
                     return (

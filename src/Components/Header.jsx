@@ -23,7 +23,7 @@ const Header = () => {
           <nav className="flex space-x-4 text-orange-500 text-sm sm:text-base font-semibold">
             <a href="#" className="hover:text-orange-600">Home</a>
             <a href="#" className="hover:text-orange-600">About</a>
-            <a href="#" className="hover:text-orange-600">%Offers</a>
+           
             <a href="#" className="hover:text-orange-600">Contact</a>
             <a href="#" className="hover:text-orange-600">Cart</a>
           </nav>
